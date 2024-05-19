@@ -1,0 +1,380 @@
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: grid;
+    grid-template-columns: repeat(1fr);
+    grid-template-rows: 1fr 1fr 9fr 1fr;
+    grid-template-areas:
+      "header"
+      "aside"
+      "main"
+      "footer";
+    height: 100vh;
+  }
+
+header {
+    grid-area: header;
+    background-color: #ffbd59;
+}
+
+nav {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+  
+nav div {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    object-fit: cover;
+    height: auto;
+    width: 100px;
+    border-radius:50%;
+    box-shadow: 0px 0px 15px 15px #ec731e;
+}
+
+.rotating-image {
+    width: 200px;
+    height: auto;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 10px;
+  }
+  
+  nav ul li a {
+    color: #227a43;
+    text-decoration: none;
+  }
+
+  h1 {
+    color: #333333;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;    
+  }
+
+  .icon-menu i {
+    font-size: 30px;
+    padding-right: 20px;
+  }
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    padding-left: 4em;
+    margin: 0;
+    background-color: #ffbd59;
+}
+
+.search .btn {
+    padding-left: 1em;
+}
+
+aside {
+    grid-area: aside;
+    display: flex;
+    font-size: 14px;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-content: center;
+  }
+
+aside ul li {
+    display: inline;
+    padding-left: 0.5em;
+}
+
+aside ul li a {
+    color: #227a43;
+    text-decoration: none;
+  }
+
+main {
+        display: grid;
+        grid-area: main;
+        padding: 10px;
+        overflow-y: auto;
+        justify-content: center;
+        align-items: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-front {
+    background-color: #fff;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    background-color: #ec731e;
+    color: #fff;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card-back h2 {
+    margin: 0 0 10px;
+}
+
+.card-back p {
+    margin: 0;
+}
+
+
+/* footer */
+
+footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242525;
+    padding: 20px 0;
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+    animation: slide-up 5s forwards;
+}
+
+footer p {
+    color: #ccc;
+    padding-left: 1rem;
+    margin: 0;
+}
+
+footer hr {
+    border: none;
+    background-color: #ec731e;
+    width: 2px; 
+    height: 0;
+    margin: 0 20px;
+    opacity: 0;
+    animation: fadeIn 7s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+    to {
+        opacity: 1;
+        height: 60px;
+    }
+}
+
+.icon {
+    font-size: 24px;
+    margin: 0 10px;
+    color: #fff;
+    transition: transform 0.2s;
+    display: inline-block;
+}
+
+.icon:hover,
+.icon:active {
+    animation: coin-flip 1s forwards;
+}
+
+@keyframes coin-flip {
+    0% {
+        transform: perspective(600px) rotateY(0deg);
+        color: #fff;
+    }
+    50% {
+        transform: perspective(600px) rotateY(180deg);
+        color: #ec731e; 
+    }
+    100% {
+        transform: perspective(600px) rotateY(360deg);
+        color: #fff; 
+    }
+}
+
+@keyframes slide-up {
+    from {
+        bottom: -90px;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+
+  /* Layout Mobile */
+@media (max-width: 576px) {
+    .menu-toggle ul {
+      display: none;
+    }
+
+    
+    .logo img {
+        height: auto;
+        width: 80px;
+    }
+
+
+    footer {
+        padding: 20px 0;
+        height: 50px;
+        font-size: 12px;
+    }
+    
+    footer p {
+        padding-left: 0rem;
+    }
+
+}
+
+
+
+  /* Layout Desktop */
+@media (min-width: 577px) {
+    body {
+        display: grid;
+        grid-template-columns: 10% 2fr;
+        grid-template-rows: 1fr 10fr 1fr;
+        grid-template-areas:
+          "header header"
+          "aside main"
+          "footer footer";
+        height: 180vh;
+        
+      }
+
+      h1 {
+        font-size: 32px;
+          
+      }
+
+      aside {
+        display: flex;
+        font-size: 24px;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 15px;
+    
+    }
+
+    aside ul {
+        margin: 1em;
+    }
+
+      aside ul li {
+        position: relative;
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    aside ul li a {
+        text-decoration: none;
+    }
+    
+    aside ul li a:hover::before {
+        content: '';
+        position: absolute; 
+        top: 50%; 
+        left: 1px;
+        width: 3px;
+        height: 50%;
+        background-color: #ec731e;
+        transform: translateY(-50%);
+    }
+ 
+    nav .menu-toggle img {
+        display: none;
+      }
+    
+      .icon-menu {
+        display: none;
+      }
+
+      main {
+        overflow-y: hidden;
+        /* justify-content:start; */
+        align-items: start;
+        /* height: 90%; */
+
+    }
+
+      .card-container {
+        max-width: 1400px;        
+    }
+   
+}
